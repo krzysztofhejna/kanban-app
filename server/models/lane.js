@@ -1,4 +1,6 @@
 import mongoose from 'mongoose';
+import Note from './note';
+
 const Schema = mongoose.Schema;
 mongoose.plugin(schema => { schema.options.usePushEach = true });
 

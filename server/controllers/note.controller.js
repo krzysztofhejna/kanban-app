@@ -61,13 +61,6 @@ export function deleteNote(req, res) {
     if (err) {
       res.status(500).send(err);
     }
-
-    lane.findOne({"notes" : { $in: [note._id] } } )
-      .then(lane => {
-        const notesCopy = lane.notes.filter(noteCopy => noteCopy.id !== note.id);
-        lane.notes = notesCopy;
-        return lane.save();
-      })
-      .then(() => note.remove(() => res.status(200).end()));
+    note.remove(() => res.status(200).end());
   });
 }
